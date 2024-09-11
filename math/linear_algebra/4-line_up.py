@@ -9,7 +9,6 @@ Functions:
     add_arrays(arr1, arr2): Adds two arrays element-wise.
 """
 
-
 def add_arrays(arr1, arr2):
     """
     Adds two arrays element-wise.
@@ -19,7 +18,8 @@ def add_arrays(arr1, arr2):
         arr2 (list of int/float): The second array.
 
     Returns:
-        list of int/float or None: A new list with element-wise sums if arrays have the same shape, otherwise None.
+        list of int/float or None: A new list with element-wise sums if arrays
+        have the same shape, otherwise None.
     """
     if len(arr1) != len(arr2):
         return None
