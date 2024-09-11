@@ -5,7 +5,7 @@
 Module for performing matrix multiplication using numpy.
 
 Provides:
-    - np_matmul(mat1, mat2): Multiplies two matrices using numpy's matmul function.
+    - np_matmul(mat1, mat2)
 """
 
 
@@ -24,7 +24,7 @@ def np_matmul(mat1, mat2):
         numpy.ndarray: The result of multiplying mat1 by mat2.
 
     Raises:
-        ValueError: If the number of columns in mat1 does not match the number of rows in mat2.
+        ValueError
 
     Examples:
         >>> import numpy as np
