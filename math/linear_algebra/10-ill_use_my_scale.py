@@ -7,7 +7,6 @@ def np_shape(matrix):
 
 # Testing the function
 if __name__ == "__main__":
-    import numpy as np
 
     mat1 = np.array([1, 2, 3, 4, 5, 6])
     mat2 = np.array([])
