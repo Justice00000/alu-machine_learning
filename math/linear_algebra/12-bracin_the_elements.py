@@ -1,8 +1,34 @@
 #!/usr/bin/env python3
 
+"""
+This module contains the np_elementwise function for performing element-wise
+operations on numpy ndarrays.
+
+The np_elementwise function performs the following operations:
+- Element-wise addition
+- Element-wise subtraction
+- Element-wise multiplication
+- Element-wise division
+
+Usage example:
+    >>> import numpy as np
+    >>> mat1 = np.array([[11, 22, 33], [44, 55, 66]])
+    >>> mat2 = np.array([[1, 2, 3], [4, 5, 6]])
+    >>> np_elementwise(mat1, mat2)
+    (array([[12, 24, 36],
+           [48, 60, 72]]),
+     array([[10, 20, 30],
+           [40, 50, 60]]),
+     array([[ 11,  44,  99],
+           [176, 275, 396]]),
+     array([[11., 11., 11.],
+           [11., 11., 11.]]))
+"""
+
 def np_elementwise(mat1, mat2):
     """
-    Perform element-wise addition, subtraction, multiplication, and division
+    Perform element-wise addition, subtraction, 
+    multiplication, and division 
     between two numpy ndarrays.
 
     Args:
@@ -46,11 +72,9 @@ def np_elementwise(mat1, mat2):
                [2., 1., 1.],
                [1., 1., 1.]]))
     """
-    # Perform element-wise operations
     add = mat1 + mat2
     sub = mat1 - mat2
     mul = mat1 * mat2
     div = mat1 / mat2
-
-    # Return the results as a tuple
+    
     return (add, sub, mul, div)
