@@ -58,7 +58,7 @@ def np_cat(mat1, mat2, axis=0):
         numpy.ndarray: Concatenated array.
 
     Raises:
-        ValueError:
+        ValueError: If the dimensions of mat1 and mat2 are not aligned along the specified axis.
 
     Examples:
         >>> import numpy as np
