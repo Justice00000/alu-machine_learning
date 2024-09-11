@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """
 2-size_me_please - Module for calculating the shape of a matrix.
 
