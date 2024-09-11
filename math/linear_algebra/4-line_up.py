@@ -1,4 +1,14 @@
 #!/usr/bin/env python3
+"""
+Module for array operations.
+
+This module provides functions to perform operations on arrays, such as
+adding two arrays element-wise.
+
+Functions:
+    add_arrays(arr1, arr2): Adds two arrays element-wise.
+"""
+
 def add_arrays(arr1, arr2):
     """
     Adds two arrays element-wise.
