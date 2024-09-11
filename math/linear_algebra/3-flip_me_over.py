@@ -9,6 +9,7 @@ Functions:
     matrix_transpose(matrix): Returns the transpose of the provided 2D matrix.
 """
 
+
 def matrix_transpose(matrix):
     """
     Transposes a 2D matrix.
