@@ -2,14 +2,18 @@
 import numpy as np
 
 """
-This module provides the np_cat function for concatenating numpy ndarrays along
-a specified axis.
+This module provides the np_cat function, which concatenates two numpy ndarrays
+along a specified axis. 
 
-The np_cat function allows concatenation of two arrays along a given axis, which 
-can handle arrays of different dimensions including 1D vectors, 2D matrices, and 
-high-dimensional matrices.
+The function is capable of handling various dimensions of arrays including:
+- 1D vectors
+- 2D matrices
+- High-dimensional matrices
 
-Usage example:
+The function utilizes numpy's concatenate function to combine the input arrays
+along the provided axis.
+
+Example usage:
     >>> import numpy as np
     >>> mat1 = np.array([1, 2, 3])
     >>> mat2 = np.array([4, 5, 6])
@@ -81,12 +85,12 @@ def np_cat(mat1, mat2, axis=0):
         >>> mat2 = np.array([[[5], [6]]])
         >>> np_cat(mat1, mat2, axis=0)
         array([[[1],
-                [2]],
+               [2]],
 
-               [[3],
-                [4]],
+              [[3],
+               [4]],
 
-               [[5],
-                [6]]])
+              [[5],
+               [6]]])
     """
-    return np.concatenate((mat1, mat2), axis=axis)
+    return np.concatenate((mat1, mat2), axis=axis)]
