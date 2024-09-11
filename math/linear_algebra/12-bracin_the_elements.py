@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+
 """
 This module contains the np_elementwise function for performing element-wise
 operations on numpy ndarrays.
@@ -24,6 +25,7 @@ Usage example:
      array([[11., 11., 11.],
            [11., 11., 11.]]))
 """
+
 
 def np_elementwise(mat1, mat2):
     """
