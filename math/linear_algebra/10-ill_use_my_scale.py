@@ -10,11 +10,14 @@ def np_shape(matrix):
     Returns:
         tuple: A tuple of integers representing the shape of the matrix.
     """
-    # Use recursion to determine the shape
-    try:
-        return (len(matrix),) + np_shape(matrix[0])
-    except (TypeError, IndexError):
-        return ()
+    # Handle empty matrix
+    shape = (len(matrix),)  # Start with the length of the current dimension
+    
+    # Recursively find the shape of the remaining dimensions
+    if matrix and isinstance(matrix[0], list):
+        shape += np_shape(matrix[0])
+    
+    return shape
 
 # Test cases
 mat1 = [1, 2, 3, 4, 5, 6]  # Normal vector
