@@ -11,6 +11,7 @@ Provides:
 
 import numpy as np
 
+
 def np_cat(mat1, mat2, axis=0):
     """
     Concatenate two numpy ndarrays along a specified axis.
@@ -32,20 +33,17 @@ def np_cat(mat1, mat2, axis=0):
         >>> mat2 = np.array([4, 5, 6])
         >>> np_cat(mat1, mat2)
         array([1, 2, 3, 4, 5, 6])
-        
         >>> mat1 = np.array([[1, 2], [3, 4]])
         >>> mat2 = np.array([[5, 6]])
         >>> np_cat(mat1, mat2, axis=0)
         array([[1, 2],
                [3, 4],
                [5, 6]])
-        
         >>> mat1 = np.array([[1, 2], [3, 4]])
         >>> mat2 = np.array([[5], [6]])
         >>> np_cat(mat1, mat2, axis=1)
         array([[1, 2, 5],
                [3, 4, 6]])
-        
         >>> mat1 = np.array([[[1], [2]], [[3], [4]]])
         >>> mat2 = np.array([[[5], [6]]])
         >>> np_cat(mat1, mat2, axis=0)
