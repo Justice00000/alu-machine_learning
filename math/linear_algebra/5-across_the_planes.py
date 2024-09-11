@@ -3,6 +3,7 @@
 This module contains functions for matrix operations.
 """
 
+
 def add_matrices2D(mat1, mat2):
     """
     Adds two 2D matrices element-wise.
@@ -15,6 +16,7 @@ def add_matrices2D(mat1, mat2):
         list of list of int/float: A new matrix that is the result of element-wise addition.
         If mat1 and mat2 have different shapes, returns None.
     """
+
     # Check if matrices have the same dimensions
     if (len(mat1) != len(mat2) or
         any(len(row1) != len(row2) for row1, row2 in zip(mat1, mat2))):
