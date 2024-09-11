@@ -1,4 +1,14 @@
 #!/usr/bin/env python3
+"""
+Module for matrix operations.
+
+This module provides functions to perform operations on matrices, such as
+transposing a 2D matrix.
+
+Functions:
+    matrix_transpose(matrix): Returns the transpose of the provided 2D matrix.
+"""
+
 def matrix_transpose(matrix):
     """
     Transposes a 2D matrix.
