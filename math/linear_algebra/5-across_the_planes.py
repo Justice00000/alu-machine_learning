@@ -1,15 +1,20 @@
-#!/usr/bin/env python3
 def add_matrices2D(mat1, mat2):
     """
     Adds two 2D matrices element-wise.
 
     Parameters:
-    mat1 (numpy.ndarray): The first matrix.
-    mat2 (numpy.ndarray): The second matrix.
+    mat1 (list of list of int/float): The first 2D matrix.
+    mat2 (list of list of int/float): The second 2D matrix.
 
     Returns:
-    numpy.ndarray: A new matrix representing the element-wise sum of mat1 and mat2, or None if the matrices are not the same shape.
+    list of list of int/float or None: A new matrix representing the element-wise sum of mat1 and mat2.
+    If mat1 and mat2 are not of the same shape, returns None.
     """
-    if mat1.shape != mat2.shape:
+    # Check if the matrices have the same dimensions
+    if len(mat1) != len(mat2) or any(len(row1) != len(row2) for row1, row2 in zip(mat1, mat2)):
         return None
-    return mat1 + mat2
+    
+    # Perform element-wise addition
+    result = [[mat1[i][j] + mat2[i][j] for j in range(len(mat1[0]))] for i in range(len(mat1))]
+    
+    return result
