@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+
 """
 This module contains functions for performing operations on numpy ndarrays.
 
@@ -13,14 +14,12 @@ Usage example:
            [2, 5],
            [3, 6]])
 """
+
 def np_transpose(matrix):
     """
     Transpose a numpy.ndarray matrix.
 
-    This function takes a numpy ndarray as input and returns its transpose. 
-    The transpose of a matrix is obtained by flipping it over its diagonal, 
-    effectively swapping the row and column indices. 
-    The function handles different dimensions of input matrices.
+    This function takes a numpy ndarray as input and returns its transpose. The transpose of a matrix is obtained by flipping it over its diagonal, effectively swapping the row and column indices. The function handles different dimensions of input matrices.
 
     Args:
         matrix (numpy.ndarray): The numpy ndarray to be transposed.
