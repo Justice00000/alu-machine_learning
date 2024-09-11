@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
 
-import numpy as np
-
 def np_elementwise(mat1, mat2):
     """
     Perform element-wise addition, subtraction, multiplication, and division
@@ -31,10 +29,28 @@ def np_elementwise(mat1, mat2):
                [176, 275, 396]]),
          array([[11., 11., 11.],
                [11., 11., 11.]]))
+
+        >>> mat1 = np.array([[1], [2], [3]])
+        >>> mat2 = np.array([1, 2, 3])
+        >>> np_elementwise(mat1, mat2)
+        (array([[2, 3, 4],
+               [3, 4, 5],
+               [4, 5, 6]]),
+         array([[0, 1, 2],
+               [1, 2, 3],
+               [2, 3, 4]]),
+         array([[1, 2, 3],
+               [2, 4, 6],
+               [3, 6, 9]]),
+         array([[1., 1., 1.],
+               [2., 1., 1.],
+               [1., 1., 1.]]))
     """
+    # Perform element-wise operations
     add = mat1 + mat2
     sub = mat1 - mat2
     mul = mat1 * mat2
     div = mat1 / mat2
-    
+
+    # Return the results as a tuple
     return (add, sub, mul, div)
