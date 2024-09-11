@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 """
 This module contains functions for performing operations on numpy ndarrays.
 
@@ -14,7 +13,6 @@ Usage example:
            [2, 5],
            [3, 6]])
 """
-
 def np_transpose(matrix):
     """
     Transpose a numpy.ndarray matrix.
