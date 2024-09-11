@@ -19,8 +19,7 @@ def add_matrices2D(mat1, mat2):
 
     # Check if matrices have the same dimensions
     if (len(mat1) != len(mat2) or
-        any(len(row1) != len(row2) 
-            for row1, row2 in zip(mat1, mat2))):
+        any(len(row1) != len(row2) for row1, row2 in zip(mat1, mat2))):
         return None
 
     # Add matrices element-wise
