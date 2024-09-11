@@ -6,8 +6,7 @@ import numpy as np
 Module for concatenating numpy ndarrays along a specified axis.
 
 Provides:
-    - np_cat(mat1, mat2, axis=0): 
-    Concatenates two numpy ndarrays along a given axis.
+    - np_cat(mat1, mat2, axis=0):
 
 Usage:
     Import this module and use the np_cat function to concatenate arrays.
@@ -59,8 +58,7 @@ def np_cat(mat1, mat2, axis=0):
         numpy.ndarray: Concatenated array.
 
     Raises:
-        ValueError: 
-        If mat1 and mat2 cannot be concatenated along the specified axis.
+        ValueError:
 
     Examples:
         >>> import numpy as np
