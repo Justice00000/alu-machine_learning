@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import numpy as np
 
+
 """
 Module for concatenating numpy ndarrays along a specified axis.
 
@@ -42,6 +43,7 @@ Usage:
               [[5],
                [6]]])
 """
+
 
 def np_cat(mat1, mat2, axis=0):
     """
