@@ -15,6 +15,7 @@ Usage example:
            [3, 6]])
 """
 
+
 def np_transpose(matrix):
     """
     Transpose a numpy.ndarray matrix.
