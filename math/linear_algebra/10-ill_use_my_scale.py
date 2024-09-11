@@ -18,14 +18,3 @@ def np_shape(matrix):
         shape += np_shape(matrix[0])
     
     return shape
-
-# Test cases
-mat1 = [1, 2, 3, 4, 5, 6]  # Normal vector
-mat2 = []  # Empty vector
-mat3 = [[1, 2, 3], [4, 5, 6]]  # 2D matrix
-mat4 = [[[1], [2], [3]], [[4], [5], [6]], [[7], [8], [9]]]  # High-dimensional matrix
-
-print(np_shape(mat1))  # Expected output: (6,)
-print(np_shape(mat2))  # Expected output: (0,)
-print(np_shape(mat3))  # Expected output: (2, 3)
-print(np_shape(mat4))  # Expected output: (3, 3, 1)
