@@ -6,6 +6,7 @@ The matrix_shape function calculates the shape of a matrix and returns
 it as a list of integers.
 """
 
+
 def matrix_shape(matrix):
     """
     Calculate the shape of a matrix.
