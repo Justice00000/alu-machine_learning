@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+
 def mat_mul(mat1, mat2):
     r1, c1 = len(mat1), len(mat1[0])
     r2, c2 = len(mat2), len(mat2[0])

@@ -6,7 +6,7 @@ def add_matrices2D(mat1, mat2):
     c2 = len(mat2[0])
 
     if r1 == r2 and c1 == c2:
-        matrix = [[ None for _ in range(c1) ] for _ in range(r1)]
+        matrix = [[None for _ in range(c1)] for _ in range(r1)]
         for r in range(r1):
             for c in range(c1):
                 matrix[r][c] = mat1[r][c] + mat2[r][c]
@@ -14,5 +14,3 @@ def add_matrices2D(mat1, mat2):
         return matrix
 
     return None
-
-
