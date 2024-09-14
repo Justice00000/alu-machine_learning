@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 def matrix_transpose(matrix):
+    '''
+    Returns s atransposed matrix based on the arguments given
+    '''
     r = len(matrix)
     c = len(matrix[0])
 

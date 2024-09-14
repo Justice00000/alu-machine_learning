@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 def add_matrices2D(mat1, mat2):
+    '''
+    Returns a new array that adds two other two-dimesional arrays
+    '''
     r1 = len(mat1)
     c1 = len(mat1[0])
     r2 = len(mat2)

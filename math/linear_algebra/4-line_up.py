@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 def add_arrays(arr1, arr2):
+    '''
+    Returns a new array that adds two other arrays together 
+    '''
     n1 = len(arr1)
     n2 = len(arr2)
     result = []
