@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 '''
 Title: Slice like a Ninja | Python
 '''
