@@ -1,4 +1,9 @@
 #!/usr/bin/env python3
+'''
+Defines a function that adds two two-dimensional arrays
+'''
+
+
 def add_matrices2D(mat1, mat2):
     '''
     Returns a new array that adds two other two-dimesional arrays
