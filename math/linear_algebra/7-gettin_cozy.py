@@ -1,5 +1,13 @@
 #!/usr/bin/env python3
+'''
+Module that concatenates two 2D matrices along a specific axis
+'''
+
+
 def cat_matrices2D(mat1, mat2, axis=0):
+    '''
+    Concatenates two 2D matrices along a specific axis
+    '''
     if not mat1 or not mat2:
         return None
 

@@ -1,7 +1,13 @@
 #!/usr/bin/env python3
+'''
+Module that multiplies two matrices
+'''
 
 
 def mat_mul(mat1, mat2):
+    '''
+    Multiplies two matrices and returns the result matrix
+    '''
     r1, c1 = len(mat1), len(mat1[0])
     r2, c2 = len(mat2), len(mat2[0])
 
