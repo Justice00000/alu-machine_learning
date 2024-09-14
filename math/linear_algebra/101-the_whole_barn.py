@@ -6,6 +6,9 @@ of the numpy library to solve a system of linear equations. | Python | Shobi
 
 
 def add_matrices(mat1, mat2):
+    '''
+    Adds two matrices together.
+    '''
     if type(mat1) != type(mat2):
         return None
 
