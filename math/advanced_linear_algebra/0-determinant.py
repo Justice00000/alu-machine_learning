@@ -22,7 +22,7 @@ def determinant(matrix):
     n = len(matrix)
     
     # Check if the matrix is square
-    if n > 0 and any(len(row) != n for row in matrix):
+    if any(len(row) != n for row in matrix):
         raise ValueError("matrix must be a square matrix")
     
     # Special case for 0x0 matrix
@@ -37,7 +37,22 @@ def determinant(matrix):
     if n == 2:
         return matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0]
     
-    # Recursive function to calculate the determinant of a matrix
+    # Function to calculate the minor matrix
+    def minor(matrix, row, col):
+        """
+        Generates the minor of the matrix by removing the specified row and column.
+
+        Parameters:
+        matrix (list of lists): The matrix from which to generate the minor.
+        row (int): The row index to be removed.
+        col (int): The column index to be removed.
+
+        Returns:
+        list of lists: The minor matrix.
+        """
+        return [r[:col] + r[col+1:] for r in (matrix[:row] + matrix[row+1:])]
+
+    # Recursive function to calculate the determinant
     def det_recursive(matrix):
         """
         Recursively calculates the determinant of a matrix using Laplace expansion.
@@ -55,7 +70,7 @@ def determinant(matrix):
         determinant_value = 0
         for c in range(size):
             # Calculate the minor of the matrix
-            minor_matrix = [row[:c] + row[c+1:] for row in matrix[1:]]
+            minor_matrix = minor(matrix, 0, c)
             # Calculate the cofactor
             cofactor = ((-1) ** c) * matrix[0][c] * det_recursive(minor_matrix)
             determinant_value += cofactor
