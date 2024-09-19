@@ -1,4 +1,20 @@
 #!/usr/bin/env python3
+"""
+This module contains a function to calculate the determinant of a square matrix
+using a recursive method based on Laplace expansion.
+
+It includes:
+- determinant function: A function that handles matrix validation and
+  calculates the determinant for square matrices.
+
+Example usage:
+    matrix = [
+        [1, 2, 3],
+        [4, 5, 6],
+        [7, 8, 9]
+    ]
+    print(determinant(matrix))  # Output: 0
+"""
 
 def determinant(matrix):
     """
@@ -57,10 +73,10 @@ def determinant(matrix):
     # Recursive function to calculate the determinant
     def det_recursive(matrix):
         """
-    Recursively calculates the determinant of a matrix using Laplace expansion.
+        Recursively calculates the determinant of a matrix using Laplace expansion.
 
         Parameters:
-    matrix (list of lists): The matrix for which to calculate the determinant.
+        The matrix for which to calculate the determinant.
 
         Returns:
         int or float: The determinant of the matrix.
