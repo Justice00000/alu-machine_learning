@@ -62,9 +62,9 @@ def minor(matrix):
 
     # Calculate the minor matrix
     minor_matrix = []
-    for i in range(n):
+    for i in range(len(matrix)):
         minor_row = []
-        for j in range(n):
+        for j in range(len(matrix[i])):
             minor_row.append(get_minor(matrix, i, j))
         minor_matrix.append(minor_row)
 
