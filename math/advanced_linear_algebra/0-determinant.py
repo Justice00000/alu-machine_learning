@@ -16,6 +16,7 @@ Example usage:
     print(determinant(matrix))  # Output: 0
 """
 
+
 def determinant(matrix):
     """
     Calculates the determinant of a square matrix.
@@ -73,7 +74,7 @@ def determinant(matrix):
     # Recursive function to calculate the determinant
     def det_recursive(matrix):
         """
-        Recursively calculates the determinant of a matrix using Laplace expansion.
+        Recursively calculates the determinant of a matrix.
 
         Parameters:
         The matrix for which to calculate the determinant.
