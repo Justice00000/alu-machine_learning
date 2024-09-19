@@ -32,13 +32,11 @@ def determinant(matrix):
     ValueError: If the matrix is not square.
     """
     # Check if matrix is a list of lists
-    is_list = isinstance(matrix, list)
-    rows_are_lists = all(isinstance(row, list) for row in matrix)
-    if not is_list or not rows_are_lists:
+    if not isinstance(matrix, list) or not all(isinstance(row, list) for row in matrix):
         raise TypeError("matrix must be a list of lists")
 
-    # Special case for 0x0 matrix
-    if matrix == []:
+    # Special case for an empty matrix (0x0 matrix)
+    if len(matrix) == 0:
         return 1
 
     # Get the size of the matrix
