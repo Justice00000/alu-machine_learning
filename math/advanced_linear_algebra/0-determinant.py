@@ -22,7 +22,7 @@ def determinant(matrix):
 
     # Get the size of the matrix
     n = len(matrix)
-    
+
     # Check if the matrix is square
     if any(len(row) != n for row in matrix):
         raise ValueError("matrix must be a square matrix")
@@ -57,10 +57,10 @@ def determinant(matrix):
     # Recursive function to calculate the determinant
     def det_recursive(matrix):
         """
-        Recursively calculates the determinant of a matrix using Laplace expansion.
+    Recursively calculates the determinant of a matrix using Laplace expansion.
 
         Parameters:
-        matrix (list of lists): The matrix for which to calculate the determinant.
+    matrix (list of lists): The matrix for which to calculate the determinant.
 
         Returns:
         int or float: The determinant of the matrix.
