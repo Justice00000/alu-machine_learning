@@ -37,16 +37,16 @@ def determinant(matrix):
     if not is_list or not rows_are_lists:
         raise TypeError("matrix must be a list of lists")
 
+    # Special case for 0x0 matrix
+    if matrix == []:
+        return 1
+
     # Get the size of the matrix
     n = len(matrix)
 
     # Check if the matrix is square
     if any(len(row) != n for row in matrix):
         raise ValueError("matrix must be a square matrix")
-
-    # Special case for 0x0 matrix
-    if n == 0:
-        return 1  # Can be modified to return 0 depending on the use case
 
     # Special case for 1x1 matrix
     if n == 1:
@@ -74,10 +74,10 @@ def determinant(matrix):
     # Recursive function to calculate the determinant
     def det_recursive(matrix):
         """
-        Recursively calculates the determinant of a matrix.
+        Recursively calculates the determinant of a matrix using Laplace expansion.
 
         Parameters:
-        The matrix for which to calculate the determinant.
+        matrix (list of lists): The matrix for which to calculate the determinant.
 
         Returns:
         int or float: The determinant of the matrix.
