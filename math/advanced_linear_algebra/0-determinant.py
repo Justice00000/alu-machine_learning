@@ -77,7 +77,7 @@ def determinant(matrix):
         Recursively calculates the determinant of a matrix.
 
         Parameters:
-        matrix (list of lists): The matrix for which to calculate the determinant.
+        The matrix for which to calculate the determinant.
 
         Returns:
         int or float: The determinant of the matrix.
