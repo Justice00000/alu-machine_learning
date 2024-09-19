@@ -16,8 +16,8 @@ def determinant(matrix):
     """
     # Check if matrix is a list of lists
     is_list = isinstance(matrix, list)
-rows_are_lists = all(isinstance(row, list) for row in matrix)
-if not is_list or not rows_are_lists:
+    rows_are_lists = all(isinstance(row, list) for row in matrix)
+    if not is_list or not rows_are_lists:
         raise TypeError("matrix must be a list of lists")
     
     # Get the size of the matrix
