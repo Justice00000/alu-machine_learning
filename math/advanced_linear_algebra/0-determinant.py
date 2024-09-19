@@ -16,7 +16,6 @@ Example usage:
     print(determinant(matrix))  # Output: 0
 """
 
-
 def determinant(matrix):
     """
     Calculates the determinant of a square matrix.
@@ -36,7 +35,7 @@ def determinant(matrix):
         raise TypeError("matrix must be a list of lists")
 
     # Special case for an empty matrix (0x0 matrix)
-    if len(matrix) == 0:
+    if not matrix or not matrix[0]:
         return 1
 
     # Get the size of the matrix
