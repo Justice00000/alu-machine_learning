@@ -41,10 +41,14 @@ def minor(matrix):
     # Get the size of the matrix
     n = len(matrix)
 
-    # Function to get the minor of the matrix by removing a specific row and column
+    # Special case for 1x1 matrix: Minor matrix is just an empty matrix
+    if n == 1:
+        return [[]]
+
+    # Function to get the minor matrix by removing a specific row and column
     def get_minor(matrix, row, col):
         """
-        Generates the minor of the matrix by removing a specific row and column.
+        Generates the minor matrix by removing a specific row and column.
 
         Parameters:
         matrix (list of lists): The matrix from which to generate the minor.
@@ -57,10 +61,11 @@ def minor(matrix):
         return [r[:col] + r[col+1:] for r in (matrix[:row] + matrix[row+1:])]
 
     # Calculate the minor matrix
-    # The minor matrix is a matrix of size (n-1)x(n-1) for each element
-    minor_matrix = [[0] * (n - 1) for _ in range(n - 1)]
+    minor_matrix = []
     for i in range(n):
+        minor_row = []
         for j in range(n):
-            minor_matrix[i][j] = get_minor(matrix, i, j)
+            minor_row.append(get_minor(matrix, i, j))
+        minor_matrix.append(minor_row)
 
     return minor_matrix
