@@ -41,9 +41,9 @@ def minor(matrix):
     # Get the size of the matrix
     n = len(matrix)
 
-    # Special case for 1x1 matrix: Minor matrix is just an empty matrix
+    # Special case for 1x1 matrix
     if n == 1:
-        return [[]]
+        return [[1]]
 
     # Function to get the minor matrix by removing a specific row and column
     def get_minor(matrix, row, col):
@@ -62,10 +62,10 @@ def minor(matrix):
 
     # Calculate the minor matrix
     minor_matrix = []
-    for i in range(len(matrix)):
+    for i in range(n):
         minor_row = []
-        for j in range(len(matrix[i])):
+        for j in range(n):
             minor_row.append(get_minor(matrix, i, j))
-        minor_matrix.append(minor_row)
+        minor_matrix.append([row[j] for row in minor_row])
 
     return minor_matrix
