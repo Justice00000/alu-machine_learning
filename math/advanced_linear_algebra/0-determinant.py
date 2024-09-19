@@ -27,16 +27,16 @@ def determinant(matrix):
     
     # Special case for 0x0 matrix
     if n == 0:
-        return 1
-    
+        return 1  # Can be modified to return 0 depending on the use case
+
     # Special case for 1x1 matrix
     if n == 1:
         return matrix[0][0]
-    
+
     # Special case for 2x2 matrix
     if n == 2:
         return matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0]
-    
+
     # Function to calculate the minor matrix
     def minor(matrix, row, col):
         """
@@ -66,7 +66,7 @@ def determinant(matrix):
         size = len(matrix)
         if size == 2:
             return matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0]
-        
+
         determinant_value = 0
         for c in range(size):
             # Calculate the minor of the matrix
@@ -74,7 +74,7 @@ def determinant(matrix):
             # Calculate the cofactor
             cofactor = ((-1) ** c) * matrix[0][c] * det_recursive(minor_matrix)
             determinant_value += cofactor
-        
+
         return determinant_value
-    
+
     return det_recursive(matrix)
