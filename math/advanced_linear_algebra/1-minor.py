@@ -13,7 +13,7 @@ Example usage:
         [7, 8, 9]
     ]
     print(minor(matrix))  
-    # Output: [[5, 6], [8, 9]]
+    # Output: [[-3, -6], [6, 3]]
 """
 
 def minor(matrix):
@@ -65,7 +65,10 @@ def minor(matrix):
     for i in range(n):
         minor_row = []
         for j in range(n):
-            minor_row.append(get_minor(matrix, i, j))
+            # Get the minor matrix after removing row i and column j
+            minor_mat = get_minor(matrix, i, j)
+            # Append the minor matrix to minor_row
+            minor_row.append(minor_mat)
         minor_matrix.append([row[j] for row in minor_row])
 
     return minor_matrix
