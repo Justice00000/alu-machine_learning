@@ -16,6 +16,7 @@ Example usage:
     print(determinant(matrix))  # Output: 0
 """
 
+
 def determinant(matrix):
     """
     Calculates the determinant of a square matrix.
@@ -31,7 +32,9 @@ def determinant(matrix):
     ValueError: If the matrix is not square.
     """
     # Check if matrix is a list of lists
-    if not isinstance(matrix, list) or not all(isinstance(row, list) for row in matrix):
+    is_list = isinstance(matrix, list)
+    rows_are_lists = all(isinstance(row, list) for row in matrix)
+    if not is_list or not rows_are_lists:
         raise TypeError("matrix must be a list of lists")
 
     # Special case for an empty matrix (0x0 matrix)
@@ -68,10 +71,10 @@ def determinant(matrix):
         """
         return [r[:col] + r[col+1:] for r in (matrix[:row] + matrix[row+1:])]
 
-    # Recursive function to calculate the determinant
+    # Function to calculate the determinant
     def det_recursive(matrix):
         """
-        Recursively calculates the determinant of a matrix using Laplace expansion.
+        Recursively calculates the determinant of a matrix.
 
         Parameters:
         matrix (list of lists): The matrix for which to calculate the determinant.
