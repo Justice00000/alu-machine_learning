@@ -42,7 +42,7 @@ def determinant(matrix):
     # Function to calculate the minor matrix
     def minor(matrix, row, col):
         """
-        Generates the minor of the matrix by removing the specified row and column.
+        Generates the minor of the matrix.
 
         Parameters:
         matrix (list of lists): The matrix from which to generate the minor.
