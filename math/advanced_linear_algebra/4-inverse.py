@@ -55,5 +55,5 @@ def inverse(matrix):
 
     # Round the results to 15 decimal
     # places to avoid floating point imprecision
-    return [[round(elem, 15) for elem in row]
+    return [[round(elem, 16) for elem in row]
             for row in inverse]
