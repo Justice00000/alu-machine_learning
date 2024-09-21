@@ -1,74 +1,80 @@
 #!/usr/bin/env python3
-"""
-This module contains a function to calculate the minor matrix of a square matrix.
 
-It includes:
-- minor function: A function that handles matrix validation and
-  calculates the minor matrix for a given square matrix.
+def determinant(matrix):
+    """
+    Calculates the determinant of a square matrix.
+    
+    Args:
+        matrix: A list of lists representing the square matrix.
 
-Example usage:
-    matrix = [
-        [1, 2, 3],
-        [4, 5, 6],
-        [7, 8, 9]
-    ]
-    print(minor(matrix))  
-    # Output: [[-3, -6], [6, 3]]
-"""
+    Returns:
+        The determinant of the matrix.
+    """
+    if len(matrix) == 1:
+        return matrix[0][0]
+    if len(matrix) == 2:
+        return matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0]
+
+    det = 0
+    for c in range(len(matrix)):
+        det += ((-1) ** c) * matrix[0][c] * determinant([row[1:] for row in matrix[1:]])
+    return det
 
 def minor(matrix):
     """
     Calculates the minor matrix of a given square matrix.
 
-    Parameters:
-    matrix (list of lists): A 2D list representing a square matrix.
+    Args:
+        matrix: A list of lists representing the square matrix.
 
     Returns:
-    list of lists: The minor matrix of the input matrix.
+        A list of lists representing the minor matrix.
 
     Raises:
-    TypeError: If the input is not a list of lists.
-    ValueError: If the matrix is not a non-empty square matrix.
+        TypeError: If the input is not a list of lists.
+        ValueError: If the matrix is not square or is empty.
     """
-    # Check if matrix is a list of lists
     if not isinstance(matrix, list) or not all(isinstance(row, list) for row in matrix):
         raise TypeError("matrix must be a list of lists")
 
-    # Check if the matrix is square and non-empty
-    if len(matrix) == 0 or len(matrix) != len(matrix[0]):
-        raise ValueError("matrix must be a non-empty square matrix")
-
-    # Get the size of the matrix
     n = len(matrix)
-
-    # Special case for 1x1 matrix
-    if n == 1:
-        return [[1]]
-
-    # Function to get the minor matrix by removing a specific row and column
-    def get_minor(matrix, row, col):
-        """
-        Generates the minor matrix by removing a specific row and column.
-
-        Parameters:
-        matrix (list of lists): The matrix from which to generate the minor.
-        row (int): The row index to be removed.
-        col (int): The column index to be removed.
-
-        Returns:
-        list of lists: The minor matrix.
-        """
-        return [r[:col] + r[col+1:] for r in (matrix[:row] + matrix[row+1:])]
+    if n == 0 or any(len(row) != n for row in matrix):
+        raise ValueError("matrix must be a non-empty square matrix")
 
     # Calculate the minor matrix
     minor_matrix = []
     for i in range(n):
         minor_row = []
         for j in range(n):
-            # Get the minor matrix after removing row i and column j
-            minor_mat = get_minor(matrix, i, j)
-            # Append the minor matrix to minor_row
-            minor_row.append(minor_mat)
-        minor_matrix.append([row[j] for row in minor_row])
+            # Create a submatrix by removing the i-th row and j-th column
+            submatrix = [row[:j] + row[j+1:] for row in (matrix[:i] + matrix[i+1:])]
+            minor_row.append(determinant(submatrix))
+        minor_matrix.append(minor_row)
 
     return minor_matrix
+
+# Example usage
+if __name__ == '__main__':
+    minor = __import__('1-minor').minor
+
+    mat1 = [[5]]
+    mat2 = [[1, 2], [3, 4]]
+    mat3 = [[1, 1], [1, 1]]
+    mat4 = [[5, 7, 9], [3, 1, 8], [6, 2, 4]]
+    mat5 = []
+    mat6 = [[1, 2, 3], [4, 5, 6]]
+
+    print(minor(mat1))  # [[0]]
+    print(minor(mat2))  # [[4, 3], [2, 1]]
+    print(minor(mat3))  # [[1, 1], [1, 1]]
+    print(minor(mat4))  # [[-12, -36, 0], [10, -34, -32], [47, 13, -16]]
+    
+    try:
+        minor(mat5)
+    except Exception as e:
+        print(e)
+    
+    try:
+        minor(mat6)
+    except Exception as e:
+        print(e)
