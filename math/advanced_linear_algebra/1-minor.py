@@ -46,9 +46,12 @@ def minor(matrix):
     for i in range(n):
         minor_row = []
         for j in range(n):
-            # Create a submatrix by removing the i-th row and j-th column
-            submatrix = [row[:j] + row[j+1:] for row in (matrix[:i] + matrix[i+1:])]
-            minor_row.append(determinant(submatrix))
+            if n == 1:
+                minor_row.append(1)  # For 1x1 matrix, return minor as [[1]]
+            else:
+                # Create a submatrix by removing the i-th row and j-th column
+                submatrix = [row[:j] + row[j+1:] for row in (matrix[:i] + matrix[i+1:])]
+                minor_row.append(determinant(submatrix))
         minor_matrix.append(minor_row)
 
     return minor_matrix
