@@ -64,10 +64,10 @@ if __name__ == '__main__':
     mat5 = []
     mat6 = [[1, 2, 3], [4, 5, 6]]
 
-    print(minor(mat1))  # [[0]]
-    print(minor(mat2))  # [[4, 3], [2, 1]]
-    print(minor(mat3))  # [[1, 1], [1, 1]]
-    print(minor(mat4))  # Example output; adjust based on your specific case
+    print(minor(mat1))  # Should return [[1]]
+    print(minor(mat2))  # Should return [[4, 3], [2, 1]]
+    print(minor(mat3))  # Should return [[1, 1], [1, 1]]
+    print(minor(mat4))  # Adjust based on your specific case
     
     try:
         minor(mat5)
