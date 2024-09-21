@@ -6,10 +6,11 @@ of a given square matrix, along with a function to calculate
 the determinant of a matrix.
 """
 
+
 def determinant(matrix):
     """
     Calculates the determinant of a square matrix.
-    
+
     Args:
         matrix: A list of lists representing the square matrix.
 
@@ -18,13 +19,16 @@ def determinant(matrix):
     """
     if len(matrix) == 1:
         return matrix[0][0]
-    if len(matrix) == 2:
-        return matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0]
 
-    det = 0
-    for c in range(len(matrix)):
-        det += ((-1) ** c) * matrix[0][c] * determinant([row[:c] + row[c+1:] for row in matrix[1:]])
+    if len(matrix) == 2:
+        return (matrix[0][0] * matrix[1][1] - 
+                matrix[0][1] * matrix[1][0])
+
+    det = sum((-1) ** c * matrix[0][c] *
+               determinant([row[:c] + row[c+1:] for row in matrix[1:]])
+               for c in range(len(matrix)))
     return det
+
 
 def minor(matrix):
     """
@@ -40,7 +44,8 @@ def minor(matrix):
         TypeError: If the input is not a list of lists.
         ValueError: If the matrix is not square or is empty.
     """
-    if not isinstance(matrix, list) or not all(isinstance(row, list) for row in matrix):
+    if not isinstance(matrix, list) or not all(isinstance(row, list)
+                                               for row in matrix):
         raise TypeError("matrix must be a list of lists")
 
     n = len(matrix)
@@ -56,11 +61,13 @@ def minor(matrix):
                 minor_row.append(1)  # For 1x1 matrix, return minor as [[1]]
             else:
                 # Create a submatrix by removing the i-th row and j-th column
-                submatrix = [row[:j] + row[j+1:] for row in (matrix[:i] + matrix[i+1:])]
+                submatrix = [row[:j] + row[j+1:] for row in
+                             (matrix[:i] + matrix[i+1:])]
                 minor_row.append(determinant(submatrix))
         minor_matrix.append(minor_row)
 
     return minor_matrix
+
 
 # Example usage
 if __name__ == '__main__':
@@ -77,12 +84,12 @@ if __name__ == '__main__':
     print(minor(mat2))  # Should return [[4, 3], [2, 1]]
     print(minor(mat3))  # Should return [[1, 1], [1, 1]]
     print(minor(mat4))  # Adjust based on your specific case
-    
+
     try:
         minor(mat5)
     except Exception as e:
         print(e)
-    
+
     try:
         minor(mat6)
     except Exception as e:
