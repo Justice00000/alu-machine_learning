@@ -21,12 +21,12 @@ def determinant(matrix):
         return matrix[0][0]
 
     if len(matrix) == 2:
-    return (matrix[0][0] * matrix[1][1] - 
+        return (matrix[0][0] * matrix[1][1] - 
                 matrix[0][1] * matrix[1][0])
 
     det = sum((-1) ** c * matrix[0][c] *
             determinant([row[:c] + row[c+1:] for row in matrix[1:]])
-               for c in range(len(matrix)))
+            for c in range(len(matrix)))
     return det
 
 
