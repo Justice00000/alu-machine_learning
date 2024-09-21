@@ -1,5 +1,11 @@
 #!/usr/bin/env python3
 
+"""
+This module provides a function to calculate the minor matrix
+of a given square matrix, along with a function to calculate
+the determinant of a matrix.
+"""
+
 def determinant(matrix):
     """
     Calculates the determinant of a square matrix.
