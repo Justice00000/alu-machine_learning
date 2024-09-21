@@ -20,7 +20,7 @@ def cofactor(matrix):
     TypeError: If the input is not a list of lists.
     ValueError: If the matrix is not square or is empty.
 """
-  
+
     def minor(matrix, row, col):
         """
         Generates the minor matrix by removing the specified row and column.
@@ -33,17 +33,17 @@ def cofactor(matrix):
         Returns:
         list of lists: The minor matrix.
     """
-    return [r[:col] + r[col + 1:] for r in 
+        return [r[:col] + r[col + 1:] for r in 
                 (matrix[:row] + matrix[row + 1:])]
 
-# Check if matrix is a list of lists
-        if not isinstance(matrix, list) or not all(isinstance(row, list) 
+    # Check if matrix is a list of lists
+    if not isinstance(matrix, list) or not all(isinstance(row, list) 
                                                for row in matrix):
         raise TypeError("matrix must be a list of lists")
-
+    
     # Get the size of the matrix
     n = len(matrix)
-
+    
     # Check if the matrix is square and non-empty
     if n == 0 or any(len(row) != n for row in matrix):
         raise ValueError("matrix must be a non-empty square matrix")
@@ -64,7 +64,7 @@ def cofactor(matrix):
         if n == 1:
             return matrix[0][0]
         if n == 2:
-        return (matrix[0][0] * matrix[1][1] - 
+            return (matrix[0][0] * matrix[1][1] - 
                     matrix[0][1] * matrix[1][0])
         
         det = 0
