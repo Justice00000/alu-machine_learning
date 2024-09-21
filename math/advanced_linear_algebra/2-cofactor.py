@@ -5,6 +5,7 @@ This module provides functions to calculate the cofactor matrix
 and determinant of a given square matrix.
 """
 
+
 def cofactor(matrix):
     """
     Calculates the cofactor matrix of a given square matrix.
@@ -18,7 +19,7 @@ def cofactor(matrix):
     Raises:
     TypeError: If the input is not a list of lists.
     ValueError: If the matrix is not square or is empty.
-    """
+"""
     
     def minor(matrix, row, col):
         """
@@ -36,10 +37,10 @@ def cofactor(matrix):
 
     # Check if matrix is a list of lists
     if not isinstance(matrix, list) or not all(isinstance(row, list) for row in matrix):
-        raise TypeError("matrix must be a list of lists")
+    raise TypeError("matrix must be a list of lists")
     
     # Get the size of the matrix
-    n = len(matrix)
+n = len(matrix)
     
     # Check if the matrix is square and non-empty
     if n == 0 or any(len(row) != n for row in matrix):
@@ -60,9 +61,9 @@ def cofactor(matrix):
             return 1
         if n == 1:
             return matrix[0][0]
-        if n == 2:
+    if n == 2:
             return (matrix[0][0] * matrix[1][1] - 
-                    matrix[0][1] * matrix[1][0])
+                matrix[0][1] * matrix[1][0])
         
         det = 0
         for c in range(n):
@@ -75,8 +76,8 @@ def cofactor(matrix):
         """
         Calculates the cofactor matrix.
 
-        Parameters:
-        matrix (list of lists): The matrix for which to calculate the cofactor matrix.
+    Parameters:
+        The matrix for which to calculate the cofactor matrix.
 
         Returns:
         list of lists: The cofactor matrix.
@@ -91,9 +92,10 @@ def cofactor(matrix):
                 cofactor_value = ((-1) ** (i + j)) * determinant(minor_matrix)
                 cofactor_row.append(cofactor_value)
             cofactor_matrix.append(cofactor_row)
-        return cofactor_matrix
+    return cofactor_matrix
     
     return calculate_cofactor(matrix)
+
 
 # Example usage (if needed)
 if __name__ == '__main__':
