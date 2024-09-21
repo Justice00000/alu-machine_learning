@@ -5,7 +5,6 @@ This module provides functions to calculate the cofactor matrix
 and determinant of a given square matrix.
 """
 
-
 def cofactor(matrix):
     """
     Calculates the cofactor matrix of a given square matrix.
@@ -20,7 +19,7 @@ def cofactor(matrix):
     TypeError: If the input is not a list of lists.
     ValueError: If the matrix is not square or is empty.
     """
-
+    
     def minor(matrix, row, col):
         """
         Generates the minor matrix by removing the specified row and column.
@@ -33,10 +32,12 @@ def cofactor(matrix):
         Returns:
         list of lists: The minor matrix.
         """
-        return [r[:col] + r[col + 1:] for r in (matrix[:row] + matrix[row + 1:])]
+        return [r[:col] + r[col + 1:] for r in 
+                (matrix[:row] + matrix[row + 1:])]
 
     # Check if matrix is a list of lists
-    if not isinstance(matrix, list) or not all(isinstance(row, list) for row in matrix):
+    if not isinstance(matrix, list) or not all(isinstance(row, list) 
+                                               for row in matrix):
         raise TypeError("matrix must be a list of lists")
     
     # Get the size of the matrix
@@ -95,6 +96,7 @@ def cofactor(matrix):
         return cofactor_matrix
     
     return calculate_cofactor(matrix)
+
 
 # Example usage (if needed)
 if __name__ == '__main__':
