@@ -21,11 +21,11 @@ def determinant(matrix):
         return matrix[0][0]
 
     if len(matrix) == 2:
-        return (matrix[0][0] * matrix[1][1] - 
+        return (matrix[0][0] * matrix[1][1] -
                 matrix[0][1] * matrix[1][0])
 
     det = sum((-1) ** c * matrix[0][c] *
-               determinant([row[:c] + row[c + 1:] for row in matrix[1:]])
+               determinant([row[:c] + row[c+1:] for row in matrix[1:]])
                for c in range(len(matrix)))
     return det
 
@@ -61,8 +61,8 @@ def minor(matrix):
                 minor_row.append(1)  # For 1x1 matrix, return minor as [[1]]
             else:
                 # Create a submatrix by removing the i-th row and j-th column
-                submatrix = [row[:j] + row[j + 1:] for row in
-                             (matrix[:i] + matrix[i + 1:])]
+                submatrix = [row[:j] + row[j+1:] for row in
+                             (matrix[:i] + matrix[i+1:])]
                 minor_row.append(determinant(submatrix))
         minor_matrix.append(minor_row)
 
