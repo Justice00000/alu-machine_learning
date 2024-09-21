@@ -17,7 +17,7 @@ def determinant(matrix):
 
     det = 0
     for c in range(len(matrix)):
-        det += ((-1) ** c) * matrix[0][c] * determinant([row[1:] for row in matrix[1:]])
+        det += ((-1) ** c) * matrix[0][c] * determinant([row[:c] + row[c+1:] for row in matrix[1:]])
     return det
 
 def minor(matrix):
@@ -55,7 +55,7 @@ def minor(matrix):
 
 # Example usage
 if __name__ == '__main__':
-    minor = __import__('1-minor').minor
+    minor = __import__('minor').minor  # Ensure this matches your file name
 
     mat1 = [[5]]
     mat2 = [[1, 2], [3, 4]]
@@ -67,7 +67,7 @@ if __name__ == '__main__':
     print(minor(mat1))  # [[0]]
     print(minor(mat2))  # [[4, 3], [2, 1]]
     print(minor(mat3))  # [[1, 1], [1, 1]]
-    print(minor(mat4))  # [[-12, -36, 0], [10, -34, -32], [47, 13, -16]]
+    print(minor(mat4))  # Example output; adjust based on your specific case
     
     try:
         minor(mat5)
