@@ -25,8 +25,8 @@ def determinant(matrix):
                 matrix[0][1] * matrix[1][0])
 
     det = sum((-1) ** c * matrix[0][c] *
-          determinant([row[:c] + row[c+1:] for row in matrix[1:]])
-          for c in range(len(matrix)))
+            determinant([row[:c] + row[c+1:] for row in matrix[1:]])
+            for c in range(len(matrix)))
     return det
 
 
