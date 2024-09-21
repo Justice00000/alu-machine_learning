@@ -37,7 +37,7 @@ def cofactor(matrix):
                 (matrix[:row] + matrix[row + 1:])]
 
     # Check if matrix is a list of lists
-if not isinstance(matrix, list) or not all(isinstance(row, list) 
+   if not isinstance(matrix, list) or not all(isinstance(row, list) 
                                                for row in matrix):
         raise TypeError("matrix must be a list of lists")
     
