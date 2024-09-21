@@ -96,7 +96,6 @@ def cofactor(matrix):
 
     return calculate_cofactor(matrix)
 
-
 # Example usage (if needed)
 if __name__ == '__main__':
     matrix = [[1, 2], [3, 4]]
