@@ -1,117 +1,158 @@
 #!/usr/bin/env python3
+"""__summary__
+This file contains the implementation to compute the inverse of a matrix.
+"""
 
-def inverse(matrix):
-    """
-    Calculates the inverse of a given square matrix.
 
-    Parameters:
-    matrix (list of lists): A 2D list representing a square matrix.
+def determinant(matrix):
+    """Calculate the determinant of a matrix.
+
+    Args:
+        matrix (list of lists): The matrix for which to compute its det.
 
     Returns:
-    list of lists or None: The inverse matrix of the given matrix or None if the matrix is singular.
+        float: The determinant of the matrix.
 
     Raises:
-    TypeError: If the input is not a list of lists.
-    ValueError: If the matrix is not square or is empty.
+        TypeError: If the matrix is not a list of lists.
+        ValueError: If the matrix is not square or is invalid.
     """
-    def minor(matrix, row, col):
-        """
-        Generates the minor matrix by removing the specified row and column.
 
-        Parameters:
-        matrix (list of lists): The matrix from which to generate the minor.
-        row (int): The row index to be removed.
-        col (int): The column index to be removed.
+    # Validate if matrix is a list of lists
+    if not isinstance(matrix, list) or \
+        len(matrix) == 0 or \
+            not all(isinstance(row, list) for row in matrix):
+        raise TypeError('matrix must be a list of lists')
 
-        Returns:
-        list of lists: The minor matrix.
-        """
-        return [r[:col] + r[col+1:] for r in (matrix[:row] + matrix[row+1:])]
-    
-    def determinant(matrix):
-        """
-        Calculates the determinant of a square matrix.
+    # Handle 0x0 matrix
+    if (len(matrix) == 1 and len(matrix[0]) == 0):
+        return 1
 
-        Parameters:
-        matrix (list of lists): A 2D list representing a square matrix.
+    # Check if the matrix is square
+    if not all(len(row) == len(matrix) for row in matrix):
+        raise ValueError('matrix must be a non-empty square matrix')
 
-        Returns:
-        int or float: The determinant of the matrix.
-        """
+    def compute_determinant(matrix):
         n = len(matrix)
-        if n == 0:
-            return 1
         if n == 1:
             return matrix[0][0]
-        if n == 2:
-            return matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0]
-        det = 0
-        for c in range(n):
-            minor_matrix = minor(matrix, 0, c)
-            det += ((-1) ** c) * matrix[0][c] * determinant(minor_matrix)
-        return det
-    
-    def cofactor(matrix):
-        """
-        Calculates the cofactor matrix of a given square matrix.
+        elif n == 2:
+            return (
+                matrix[0][0] * matrix[1][1]) - (matrix[0][1] * matrix[1][0])
+        else:
+            det = 0
+            for col in range(n):
+                sub_matrix = [row[:col] + row[col+1:] for row in matrix[1:]]
+                cofactor = ((-1) ** col) * \
+                    matrix[0][col] * compute_determinant(sub_matrix)
+                det += cofactor
+            return det
 
-        Parameters:
-        matrix (list of lists): A 2D list representing a square matrix.
+    return compute_determinant(matrix)
 
-        Returns:
-        list of lists: The cofactor matrix.
-        """
-        cofactor_matrix = []
-        n = len(matrix)
-        for i in range(n):
-            cofactor_row = []
-            for j in range(n):
-                # Calculate the minor for element (i, j)
-                minor_matrix = minor(matrix, i, j)
-                # Calculate the cofactor
-                cofactor_value = ((-1) ** (i + j)) * determinant(minor_matrix)
-                cofactor_row.append(cofactor_value)
-            cofactor_matrix.append(cofactor_row)
-        return cofactor_matrix
-    
-    def adjugate(matrix):
-        """
-        Calculates the adjugate matrix of a given square matrix.
 
-        Parameters:
-        matrix (list of lists): A 2D list representing a square matrix.
+def minor(matrix):
+    """Calculate the minor matrix of a given square matrix.
 
-        Returns:
-        list of lists: The adjugate matrix.
-        """
-        cofactor_matrix = cofactor(matrix)
-        n = len(matrix)
-        # Transpose the cofactor matrix to get the adjugate matrix
-        adjugate_matrix = [[cofactor_matrix[j][i] for j in range(n)] for i in range(n)]
-        return adjugate_matrix
+    Args:
+        matrix (list of lists): The matrix to compute its minor matrix.
 
-    # Check if matrix is a list of lists
-    if not isinstance(matrix, list) or not all(isinstance(row, list) for row in matrix):
-        raise TypeError("matrix must be a list of lists")
-    
-    # Get the size of the matrix
-    n = len(matrix)
-    
-    # Check if the matrix is square and non-empty
-    if n == 0 or any(len(row) != n for row in matrix):
-        raise ValueError("matrix must be a non-empty square matrix")
-    
-    # Calculate the determinant
+    Returns:
+        list of lists: The minor matrix of the input matrix.
+
+    Raises:
+        TypeError: If the matrix is not a list of lists.
+        ValueError: If the matrix is not square or is empty.
+    """
+
+    # Validate if matrix is a list of lists
+    if not isinstance(matrix, list) or \
+        len(matrix) == 0 or \
+            not all(isinstance(row, list) for row in matrix):
+        raise TypeError('matrix must be a list of lists')
+
+    # Handle 0x0 matrix
+    if (len(matrix) == 1 and len(matrix[0]) == 0):
+        raise ValueError('matrix must be a non-empty square matrix')
+
+    # Check if the matrix is square
+    if not all(len(row) == len(matrix) for row in matrix):
+        raise ValueError('matrix must be a non-empty square matrix')
+
+    size = len(matrix)
+
+    if size == 1:
+        return [[1]]
+
+    def get_minor(mat, row, col):
+        """Get the minor of the matrix by removing the current row and col"""
+        return [r[:col] + r[col+1:] for r in (mat[:row] + mat[row+1:])]
+
+    # compute the minor matrix
+    return [
+        [
+            determinant(get_minor(matrix, i, j)) for j in range(size)
+        ] for i in range(size)
+    ]
+
+
+def cofactor(matrix):
+    """_summary_
+
+    Args:
+        matrix (list of lists): The matrix to compute its cofactor.
+
+    Returns:
+        matrix: The cofactor matrix
+    """
+    minors = minor(matrix)
+    for row in range(len(minors)):
+        for col in range(len(minors[row])):
+            minors[row][col] = ((-1) ** (row + col)) * minors[row][col]
+
+    return minors
+
+
+def adjugate(matrix):
+    """_summary_
+
+    Args:
+        matrix (_type_): The matrix to compute its adjugate.
+
+    Returns:
+        matrix: The adjugate matrix
+    """
+    cofactor_matrix = cofactor(matrix)
+    adjugate_matrix = [
+        [0 for _ in range(len(matrix))] for _ in range(len(matrix[0]))
+    ]
+
+    for row in range(len(cofactor_matrix)):
+        for col in range(len(cofactor_matrix[row])):
+            adjugate_matrix[col][row] = cofactor_matrix[row][col]
+
+    return adjugate_matrix
+
+
+def inverse(matrix):
+    """_summary_
+
+    Args:
+        matrix (list of lists): The matrix to compute its inverse.
+
+    Returns:
+        matrix: The inverse matrix.
+    """
     det = determinant(matrix)
-    
-    # Check if the matrix is singular
+
+    # Return None of matrix is singular
     if det == 0:
         return None
-    
-    # Calculate the adjugate matrix
+
     adjugate_matrix = adjugate(matrix)
-    
-    # Calculate the inverse matrix
-    inverse_matrix = [[adjugate_matrix[i][j] / det for j in range(n)] for i in range(n)]
-    
-    return inverse_matrix
+
+    # Compute the inverse of the matrix
+    for row in adjugate_matrix:
+        row[:] = map(lambda col: col / det, row)
+
+    return adjugate_matrix
