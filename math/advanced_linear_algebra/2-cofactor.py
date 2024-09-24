@@ -1,104 +1,113 @@
 #!/usr/bin/env python3
-
-"""
-This module provides functions to calculate the cofactor matrix
-and determinant of a given square matrix.
+"""__summary__
+This file contains the implementation to compute the cofactor matrix.
 """
 
-def cofactor(matrix):
-    """
-    Calculates the cofactor matrix of a given square matrix.
 
-    Parameters:
-    matrix (list of lists): A 2D list representing a square matrix.
+def determinant(matrix):
+    """Calculate the determinant of a matrix.
+
+    Args:
+        matrix (list of lists): The matrix for which to compute its det.
 
     Returns:
-    list of lists: The cofactor matrix of the given matrix.
+        float: The determinant of the matrix.
 
     Raises:
-    TypeError: If the input is not a list of lists.
-    ValueError: If the matrix is not square or is empty.
+        TypeError: If the matrix is not a list of lists.
+        ValueError: If the matrix is not square or is invalid.
     """
 
-    def minor(matrix, row, col):
-        """
-        Generates the minor matrix by removing the specified row and column.
+    # Validate if matrix is a list of lists
+    if not isinstance(matrix, list) or \
+        len(matrix) == 0 or \
+            not all(isinstance(row, list) for row in matrix):
+        raise TypeError('matrix must be a list of lists')
 
-        Parameters:
-        matrix (list of lists): The matrix from which to generate the minor.
-        row (int): The row index to be removed.
-        col (int): The column index to be removed.
+    # Handle 0x0 matrix
+    if (len(matrix) == 1 and len(matrix[0]) == 0):
+        return 1
 
-        Returns:
-        list of lists: The minor matrix.
-        """
-        return [r[:col] + r[col + 1:] for r in 
-                (matrix[:row] + matrix[row + 1:])]
+    # Check if the matrix is square
+    if not all(len(row) == len(matrix) for row in matrix):
+        raise ValueError('matrix must be a square matrix')
 
-    # Check if matrix is a list of lists
-    if not isinstance(matrix, list) or not all(isinstance(row, list) 
-                                               for row in matrix):
-        raise TypeError("matrix must be a list of lists")
-    
-    # Get the size of the matrix
-    n = len(matrix)
-    
-    # Check if the matrix is square and non-empty
-    if n == 0 or any(len(row) != n for row in matrix):
-        raise ValueError("matrix must be a non-empty square matrix")
-
-    def determinant(matrix):
-        """
-        Calculates the determinant of a square matrix.
-
-        Parameters:
-        matrix (list of lists): A 2D list representing a square matrix.
-
-        Returns:
-        int or float: The determinant of the matrix.
-        """
+    def compute_determinant(matrix):
         n = len(matrix)
-        if n == 0:
-            return 1
         if n == 1:
             return matrix[0][0]
-        if n == 2:
-            return (matrix[0][0] * matrix[1][1] - 
-                    matrix[0][1] * matrix[1][0])
-        
-        det = 0
-        for c in range(n):
-            minor_matrix = minor(matrix, 0, c)
-            det += ((-1) ** c) * matrix[0][c] * determinant(minor_matrix)
-        return det
+        elif n == 2:
+            return (
+                matrix[0][0] * matrix[1][1]) - (matrix[0][1] * matrix[1][0])
+        else:
+            det = 0
+            for col in range(n):
+                sub_matrix = [row[:col] + row[col+1:] for row in matrix[1:]]
+                cofactor = ((-1) ** col) * \
+                    matrix[0][col] * compute_determinant(sub_matrix)
+                det += cofactor
+            return det
 
-    # Function to calculate the cofactor matrix
-    def calculate_cofactor(matrix):
-        """
-        Calculates the cofactor matrix.
-
-        Parameters:
-        matrix (list of lists): The matrix for which to calculate the cofactor matrix.
-
-        Returns:
-        list of lists: The cofactor matrix.
-        """
-        cofactor_matrix = []
-        for i in range(n):
-            cofactor_row = []
-            for j in range(n):
-                # Calculate the minor for element (i, j)
-                minor_matrix = minor(matrix, i, j)
-                # Calculate the cofactor
-                cofactor_value = ((-1) ** (i + j)) * determinant(minor_matrix)
-                cofactor_row.append(cofactor_value)
-            cofactor_matrix.append(cofactor_row)
-        return cofactor_matrix
-    
-    return calculate_cofactor(matrix)
+    return compute_determinant(matrix)
 
 
-# Example usage
-if __name__ == '__main__':
-    matrix = [[1, 2], [3, 4]]
-    print(cofactor(matrix))  # Example output
+def minor(matrix):
+    """Calculate the minor matrix of a given square matrix.
+
+    Args:
+        matrix (list of lists): The matrix to compute its minor matrix.
+
+    Returns:
+        list of lists: The minor matrix of the input matrix.
+
+    Raises:
+        TypeError: If the matrix is not a list of lists.
+        ValueError: If the matrix is not square or is empty.
+    """
+
+    # Validate if matrix is a list of lists
+    if not isinstance(matrix, list) or \
+        len(matrix) == 0 or \
+            not all(isinstance(row, list) for row in matrix):
+        raise TypeError('matrix must be a list of lists')
+
+    # Handle 0x0 matrix
+    if (len(matrix) == 1 and len(matrix[0]) == 0):
+        raise ValueError('matrix must be a non-empty square matrix')
+
+    # Check if the matrix is square
+    if not all(len(row) == len(matrix) for row in matrix):
+        raise ValueError('matrix must be a non-empty square matrix')
+
+    size = len(matrix)
+
+    if size == 1:
+        return [[1]]
+
+    def get_minor(mat, row, col):
+        """Get the minor of the matrix by removing the current row and col"""
+        return [r[:col] + r[col+1:] for r in (mat[:row] + mat[row+1:])]
+
+    # compute the minor matrix
+    return [
+        [
+            determinant(get_minor(matrix, i, j)) for j in range(size)
+        ] for i in range(size)
+    ]
+
+
+def cofactor(matrix):
+    """_summary_
+
+    Args:
+        matrix (list of lists): The matrix to compute its cofactor.
+
+    Returns:
+        matrix: The cofactor matrix
+    """
+    minors = minor(matrix)
+    for row in range(len(minors)):
+        for col in range(len(minors[row])):
+            minors[row][col] = ((-1) ** (row + col)) * minors[row][col]
+
+    return minors
