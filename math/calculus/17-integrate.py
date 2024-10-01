@@ -11,12 +11,12 @@ def poly_integral(poly, C=0):
     if not isinstance(poly, list) or not isinstance(C, int):
         return None
 
-    if not all(isinstance(coef, (int, float)) for coef in poly):
-        return None
-    
+    # if not all(isinstance(coef, (int, float)) for coef in poly):
+    #     return None
+
     if len(poly) == 0:
         return [C]
-    
+
     # Calculate the integral
     integral = [C]  # Start with the integration constant
     for power, coef in enumerate(poly):
@@ -25,9 +25,8 @@ def poly_integral(poly, C=0):
         if new_coef.is_integer():
             new_coef = int(new_coef)
         integral.append(new_coef)
-    
-    # Remove trailing zeros
+
     while len(integral) > 1 and integral[-1] == 0:
         integral.pop()
-    
+
     return integral
