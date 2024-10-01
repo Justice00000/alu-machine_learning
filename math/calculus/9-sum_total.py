@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 '''
 Write a recursive function that takes an integer n as input and returns the sum of the squares of the first n positive integers. If n is not a positive integer, the function should return None.
 '''
