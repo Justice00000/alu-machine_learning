@@ -15,7 +15,7 @@ def poly_integral(poly, C=0):
     #     return None
 
     if len(poly) == 0:
-        None
+        return None
 
     # Calculate the integral
     integral = [C]  # Start with the integration constant
