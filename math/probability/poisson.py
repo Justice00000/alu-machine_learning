@@ -21,10 +21,22 @@ class Poisson:
             self.lambtha = float(sum(data) / len(data))
 
     def pmf(self, k):
+        '''
+        Calculates the value of the PMF for a given number of “successes”
+        '''
         if k < 0:
             return 0
         return (self.lambtha ** k) * \
             (self.exp(-self.lambtha) / self.factorial(k))
+       
+    def cdf(self, k):
+        '''
+        Calculates the value of the CDF for a given number of "successes"
+        '''
+        if k < 0:
+            return 0
+        k = int(k)
+        return sum([self.pmf(n) for n in range(k + 1)])
 
     def exp(self, x):
         '''
