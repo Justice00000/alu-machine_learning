@@ -25,4 +25,22 @@ class Poisson:
         k = int(k)
         if k < 0:
             return 0
-        return (math.exp(-self.lambtha) * (self.lambtha ** k)) / math.factorial(k)
+        return (self.exp(-self.lambtha) * (self.lambtha ** k)) / self.factorial(k)
+
+    def exp(self, x):
+        result = 1
+        term = 1
+        n = 1
+        while abs(term) > 1e-10:
+            term *= x / n
+            result += term
+            n += 1
+        return result
+
+    def factorial(self, n):
+        if n == 0 or n == 1:
+            return 1
+        result = 1
+        for i in range(2, n + 1):
+            result *= i
+        return result
