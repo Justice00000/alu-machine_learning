@@ -22,12 +22,13 @@ class Poisson:
 
     def pmf(self, k):
         '''
-        Calculates the value of the PMF for a given number of “successes”
+        Calculates the value of the PMF for a given number of "successes"
         '''
         if k < 0:
             return 0
-        return (self.lambtha ** k) * \
-            (self.exp(-self.lambtha) / self.factorial(k))
+        k = int(k)
+        return (self.exp(-self.lambtha)
+                * self.lambtha ** k) / self.factorial(k)
 
     def cdf(self, k):
         '''
