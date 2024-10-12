@@ -19,27 +19,23 @@ class Poisson:
             if len(data) < 2:
                 raise ValueError("data must contain multiple values")
             self.lambtha = float(sum(data) / len(data))
-            
+
     def pmf(self, k):
-        k = int(k)
         if k < 0:
             return 0
-        return (self.exp(-self.lambtha) * (self.lambtha ** k)) / self.factorial(k)
+        return (self.lambtha ** k) * \
+            (self.exp(-self.lambtha) / self.factorial(k))
 
     def exp(self, x):
-        result = 1
-        term = 1
-        n = 1
-        while abs(term) > 1e-10:
-            term *= x / n
-            result += term
-            n += 1
-        return result
+        '''
+        Compute the value of e raised to the power x
+        '''
+        return (2.7182818285 ** x)
 
     def factorial(self, n):
-        if n == 0 or n == 1:
+        '''
+        Factorial of a number
+        '''
+        if n == 0:
             return 1
-        result = 1
-        for i in range(2, n + 1):
-            result *= i
-        return result
+        return n * self.factorial(n - 1)
