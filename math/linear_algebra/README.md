@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-# Linear Algebra
-=======
-lice Me Up
+Slice Me Up
 
 ## Description
 This project demonstrates the use of Python's list slicing to extract specific elements from a list. The program is designed to:
@@ -20,4 +17,3 @@ To run the program, use the following command:
 ```bash
 ./0-slice_me_up.py
 
->>>>>>> a262473352dd582d190fed95fa6e5c665f37f9ba

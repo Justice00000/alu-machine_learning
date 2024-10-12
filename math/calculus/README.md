@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Calculus
 =======
 # Calculus and Mathematical Series Overview
@@ -86,4 +85,3 @@ This repository is licensed under the MIT License. See the [LICENSE](LICENSE) fi
 ## Contributing
 
 Contributions are welcome! Please feel free to submit issues or pull requests for improvements and additional resources.
->>>>>>> a262473352dd582d190fed95fa6e5c665f37f9ba
