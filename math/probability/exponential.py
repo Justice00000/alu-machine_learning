@@ -28,6 +28,14 @@ class Exponential:
             return 0
         return self.lambtha * self._exp(-self.lambtha * x)
 
+    def cdf(self, x):
+        '''
+        Calculates the value of the CDF for a given time period
+        '''
+        if x < 0:
+            return 0
+        return 1 - self._exp(-self.lambtha * x)
+
     def _exp(self, x):
         '''
         Compute the value of e raised to the power x
