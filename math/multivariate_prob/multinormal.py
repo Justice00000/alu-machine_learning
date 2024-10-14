@@ -22,3 +22,25 @@ class MultiNormal:
         # Calculate covariance matrix without using numpy.cov
         centered_data = data - self.mean
         self.cov = np.dot(centered_data, centered_data.T) / (n - 1)
+
+    def pdf(self, x):
+        '''
+        Computes the PDF at a data point
+        '''
+        if not isinstance(x, np.ndarray):
+            raise TypeError("x must be a numpy.ndarray")
+
+        d = self.cov.shape[0]
+        if x.shape != (d, 1):
+            raise ValueError(f"x must have the shape ({d}, 1)")
+
+        # Calculate the PDF using the formula for
+        # multivariate normal distribution
+        det = np.linalg.det(self.cov)
+        inv_cov = np.linalg.inv(self.cov)
+        centered_x = x - self.mean
+        exponent = -0.5 * np.dot(np.dot(centered_x.T, inv_cov), centered_x)
+        normalization = 1 / ((2 * np.pi) ** (d / 2) * np.sqrt(det))
+        pdf_value = normalization * np.exp(exponent)
+
+        return float(pdf_value)
