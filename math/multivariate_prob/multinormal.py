@@ -32,7 +32,7 @@ class MultiNormal:
 
         d = self.cov.shape[0]
         if x.shape != (d, 1):
-            raise ValueError(f"x must have the shape ({d}, 1)")
+            raise ValueError("x must have the shape ({}, 1)".format(d))
 
         # Calculate the PDF using the formula for
         # multivariate normal distribution
