@@ -14,7 +14,7 @@ def correlation(C):
         raise TypeError("C must be a numpy.ndarray")
 
     # Check if C is a square matrix
-    if C.shape[0] != C.shape[1]:
+    if C.ndim != 2 or C.shape[0] != C.shape[1]:
         raise ValueError("C must be a 2D square matrix")
 
     # Calculate the standard deviations
