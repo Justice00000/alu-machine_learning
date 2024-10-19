@@ -1,7 +1,14 @@
+#!/usr/bin/env python3
+'''
+Defines a function that calculates the posterior probability
+'''
 import numpy as np
 
 
 def posterior(x, n, P, Pr):
+    '''
+    Defines a function that calculates the posterior probability
+    '''
     # Input validations
     if not isinstance(n, int) or n <= 0:
         raise ValueError("n must be a positive integer")
