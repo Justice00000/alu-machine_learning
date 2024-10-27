@@ -12,27 +12,17 @@ def convolve_grayscale_valid(images, kernel):
         numpy.ndarray: The convolved images
     """
     m = images.shape[0]
-    h = images.shape[1]
-    w = images.shape[2]
+    height = images.shape[1]
+    width = images.shape[2]
     kh = kernel.shape[0]
     kw = kernel.shape[1]
 
-    # Calculate output dimensions for valid convolution
-    output_h = h - kh + 1
-    output_w = w - kw + 1
+    convoluted = np.zeros((m, height - kh + 1, width - kw + 1))
 
-    # Initialize output array
-    output = np.zeros((m, output_h, output_w))
+    for h in range(height - kh + 1):
+        for w in range(width - kw + 1):
+            output = np.sum(images[:, h:h + kh, w:w + kw] * kernel,
+                            axis=1).sum(axis=1)
+            convoluted[:, h, w] = output
 
-    for i in range(m):
-        # multiplication
-        for j in range(output_h * output_w):
-            # Convert flat index j to 2D coordinates
-            row = j // output_w
-            col = j % output_w
-
-            output[i, row, col] = np.sum(
-                images[i, row:row + kh, col:col + kw] * kernel
-            )
-
-    return output
+    return convoluted
