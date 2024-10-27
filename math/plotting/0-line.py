@@ -1,12 +1,9 @@
 #!/usr/bin/env python3
-import os
 import numpy as np
 import matplotlib.pyplot as plt
 
 y = np.arange(0, 11) ** 3
 
-plt.plot(y, 'r-')
-plt.savefig(
-    f"plots/{os.path.basename(__file__)[0:-3] + '_plot.png'}"
-)
+plt.plot(y, 'r-')  # 'r-' specifies a red solid line
+plt.xlim(0, 10)  # Set x-axis range from 0 to 10
 plt.show()
