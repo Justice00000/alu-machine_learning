@@ -1,4 +1,10 @@
 #!/usr/bin/env python3
+'''
+File to calculate the cost of a neural network with L2
+regularization. The cost is calculated using the formula:
+
+C = J + (λ / (2 * m)) * Σ||W||^2
+'''
 
 import numpy as np
 
