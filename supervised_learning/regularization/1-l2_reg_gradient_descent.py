@@ -1,4 +1,8 @@
 #!/usr/bin/env python3
+'''
+Function that updates the weights and biases of a neural network using
+gradient descent with L2 regularization.
+'''
 
 import numpy as np
 
