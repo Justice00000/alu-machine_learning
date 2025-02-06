@@ -4,8 +4,6 @@ This script creates an early stopping callback
 using tensorflow library.
 '''
 
-import tensorflow as tf
-
 
 def early_stopping(cost, opt_cost, threshold, patience, count):
     '''
