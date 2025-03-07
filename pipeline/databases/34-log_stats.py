@@ -12,7 +12,7 @@ if __name__ == "__main__":
     methods = ["GET", "POST", "PUT", "PATCH", "DELETE"]
     for method in methods:
         method_count = logs_coll.count_documents({"method": method})
-        print("    method {}: {}".format(method, method_count))
+        print("\tmethod {}: {}".format(method, method_count))
     filter_path = {"method": "GET", "path": "/status"}
     path_count = logs_coll.count_documents(filter_path)
     print("{} status check".format(path_count))
