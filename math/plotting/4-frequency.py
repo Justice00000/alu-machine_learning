@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 np.random.seed(5)
 student_grades = np.random.normal(68, 15, 50)
 
+<<<<<<< HEAD
 plt.hist(student_grades,
          bins=[0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100],
          edgecolor='black')
@@ -14,4 +15,12 @@ plt.title("Project A")
 plt.xlim((0, 100))
 plt.xticks(np.arange(0, 101, 10))
 plt.ylim((0, 30))
+=======
+# your code here
+plt.hist(student_grades, bins=range(0, 101, 10), edgecolor='black')
+plt.xticks(range(0, 101, 10))
+plt.xlabel('Grades')
+plt.ylabel('Number of Students')
+plt.title('Project A')
+>>>>>>> eb1c0f93d156ce747d976a0c95dd86710b1286e6
 plt.show()

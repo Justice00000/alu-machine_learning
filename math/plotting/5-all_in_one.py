@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
+<<<<<<< HEAD
 """ plots all 5 previous graphs in one figure """
+=======
+>>>>>>> eb1c0f93d156ce747d976a0c95dd86710b1286e6
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -26,6 +29,7 @@ y32 = np.exp((r3 / t32) * x3)
 np.random.seed(5)
 student_grades = np.random.normal(68, 15, 50)
 
+<<<<<<< HEAD
 fig = plt.figure()
 
 ax1 = fig.add_subplot(3, 2, 1)
@@ -70,3 +74,44 @@ ax5.set_ylim((0, 30))
 fig.suptitle("All in One")
 plt.tight_layout()
 plt.show()
+=======
+# your code here
+plt.subplot(321)
+plt.plot(y0, 'r')
+
+plt.subplot(322)
+plt.plot(x1, y1, 'mo')
+plt.xlabel('Height (in)', fontsize='x-small')
+plt.ylabel('Weight (lbs)', fontsize='x-small')
+plt.title('Men\'s Height vs Weight', fontsize='x-small')
+
+plt.subplot(323)
+plt.plot(x2, y2)
+plt.yscale('log')
+plt.xlabel('Time (years)', fontsize='x-small')
+plt.ylabel('Fraction Remaining', fontsize='x-small')
+plt.title('Exponential Decay of C-14', fontsize='x-small')
+plt.xlim(0, 28650)
+
+plt.subplot(324)
+plt.plot(x3, y31, "r--", label="C-14")
+plt.plot(x3, y32, "g", label="Ra-226")
+plt.xlabel('Time (years)', fontsize='x-small')
+plt.ylabel('Fraction Remaining', fontsize='x-small')
+plt.title('Exponential Decay of Radioactive Elements', fontsize='x-small')
+plt.legend(loc="upper right")
+plt.axis([0 , 20000, 0, 1])
+
+plt.subplot(313)
+plt.hist(student_grades, bins=range(0, 101, 10), edgecolor='black')
+plt.xticks(range(0, 101, 10))
+plt.xlabel('Grades', fontsize='x-small')
+plt.ylabel('Number of Students', fontsize='x-small')
+plt.title('Project A', fontsize='x-small')
+
+
+plt.tight_layout()
+plt.suptitle('All in One')
+
+plt.show()
+>>>>>>> eb1c0f93d156ce747d976a0c95dd86710b1286e6

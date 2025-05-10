@@ -1,2 +1,7 @@
+<<<<<<< HEAD
 // show all dbs
 show dbs
+=======
+// lists all databases in MongoDB
+show dbs
+>>>>>>> eb1c0f93d156ce747d976a0c95dd86710b1286e6

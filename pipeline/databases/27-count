@@ -1,2 +1,7 @@
+<<<<<<< HEAD
 // count documents
 db.school.count()
+=======
+// counts the number of documents in the collection school in MongoDB
+db.school.count()
+>>>>>>> eb1c0f93d156ce747d976a0c95dd86710b1286e6

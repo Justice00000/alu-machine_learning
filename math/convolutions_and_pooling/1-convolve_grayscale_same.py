@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #!/usr/bin/env python3
 """Function that performs a valid convolution on grayscale images"""
 
@@ -33,3 +34,45 @@ def convolve_grayscale_same(images, kernel):
             convolved[:, i, j] = np.sum(np.multiply(image, kernel),
                                         axis=(1, 2))
     return convolved
+=======
+#!/usr/bin/env python3
+"""Module that performs same convolution on grayscale images"""
+
+import numpy as np
+
+
+def convolve_grayscale_same(images, kernel):
+    """
+    Performs a same convolution on grayscale images
+
+    returns:
+        numpy.ndarray contained convolved images
+    """
+    m = images.shape[0]
+    height = images.shape[1]
+    width = images.shape[2]
+    kh = kernel.shape[0]
+    kw = kernel.shape[1]
+
+    if (kh % 2) is 1:
+        ph = (kh - 1) // 2
+    else:
+        ph = kh // 2
+
+    if (kw % 2) is 1:
+        pw = (kw - 1) // 2
+    else:
+        pw = kw // 2
+
+    images = np.pad(images, ((0, 0), (ph, ph), (pw, pw)),
+                    'constant', constant_values=0)
+    convoluted = np.zeros((m, height, width))
+
+    for h in range(height):
+        for w in range(width):
+            output = np.sum(images[:, h:h + kh, w:w + kw] * kernel,
+                            axis=1).sum(axis=1)
+            convoluted[:, h, w] = output
+
+    return convoluted
+>>>>>>> eb1c0f93d156ce747d976a0c95dd86710b1286e6

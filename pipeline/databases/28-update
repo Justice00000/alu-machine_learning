@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 // add attributes
 db.school.update(
     { name: "Holberton school" }, { $set: { address: "972 Mission street" } }, 
     { multi: true })
+=======
+// adds new attribute to a document in the collection school in MongoDB
+db.school.update({name: "Holberton school"}, {'$set': {address: "972 Mission street"}}, false, true)
+>>>>>>> eb1c0f93d156ce747d976a0c95dd86710b1286e6

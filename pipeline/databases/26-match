@@ -1,2 +1,8 @@
+<<<<<<< HEAD
 // find match
 db.school.find({ name: "Holberton school" });
+=======
+// lists all documents with name="Holberton school"
+// in the collection school in MongoDB
+db.school.find({name: "Holberton school"})
+>>>>>>> eb1c0f93d156ce747d976a0c95dd86710b1286e6

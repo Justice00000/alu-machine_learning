@@ -1,2 +1,7 @@
+<<<<<<< HEAD
 // create and switch db
 use my_db
+=======
+// creates or uses the database my_db in MongoDB
+use my_db
+>>>>>>> eb1c0f93d156ce747d976a0c95dd86710b1286e6

@@ -2,7 +2,11 @@
 import numpy as np
 matrix = np.array([[1, 2, 3, 4, 5, 6], [7, 8, 9, 10, 11, 12],
                    [13, 14, 15, 16, 17, 18], [19, 20, 21, 22, 23, 24]])
+<<<<<<< HEAD
 mat1 = matrix[1:3]
+=======
+mat1 = matrix[1:3, :]
+>>>>>>> eb1c0f93d156ce747d976a0c95dd86710b1286e6
 mat2 = matrix[:, 2:4]
 mat3 = matrix[1:, 3:]
 print("The middle two rows of the matrix are:\n{}".format(mat1))

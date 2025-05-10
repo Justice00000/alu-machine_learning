@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 // insert document into collection
 db.school.insert(
     {
         name: "Holberton school"
     }
 )
+=======
+// inserts a document in the collection school in MongoDB
+db.school.insert({name: "Holberton school"})
+>>>>>>> eb1c0f93d156ce747d976a0c95dd86710b1286e6

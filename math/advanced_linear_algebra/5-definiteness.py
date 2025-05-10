@@ -1,13 +1,20 @@
 #!/usr/bin/env python3
+<<<<<<< HEAD
 """
 Defines function that calculates the definiteness of a matrix
 """
 
 
+=======
+'''
+This module contains
+'''
+>>>>>>> eb1c0f93d156ce747d976a0c95dd86710b1286e6
 import numpy as np
 
 
 def definiteness(matrix):
+<<<<<<< HEAD
     """
     Calculates the definiteness of a matrix
 
@@ -48,3 +55,40 @@ def definiteness(matrix):
     elif neg_count and pos_count == 0:
         return ("Negative definite")
     return ("Indefinite")
+=======
+    '''
+    This function determines the definiteness of a matrix.
+    '''
+    # Check if matrix is a numpy.ndarray
+    if not isinstance(matrix, np.ndarray):
+        raise TypeError("matrix must be a numpy.ndarray")
+
+    # Check if matrix is square
+    if matrix.ndim != 2 or matrix.shape[0] != matrix.shape[1]:
+        return None
+
+    # Check if matrix is symmetric
+    if not np.allclose(matrix, matrix.T):
+        return None
+
+    try:
+        # Compute eigenvalues
+        eigenvalues = np.linalg.eigvals(matrix)
+    except np.linalg.LinAlgError:
+        # Matrix is not valid (e.g., contains NaN or inf)
+        return None
+
+    # Check definiteness based on eigenvalues
+    if np.all(eigenvalues > 0):
+        return "Positive definite"
+    elif np.all(eigenvalues >= 0):
+        return "Positive semi-definite"
+    elif np.all(eigenvalues < 0):
+        return "Negative definite"
+    elif np.all(eigenvalues <= 0):
+        return "Negative semi-definite"
+    elif np.any(eigenvalues > 0) and np.any(eigenvalues < 0):
+        return "Indefinite"
+    else:
+        return None
+>>>>>>> eb1c0f93d156ce747d976a0c95dd86710b1286e6
