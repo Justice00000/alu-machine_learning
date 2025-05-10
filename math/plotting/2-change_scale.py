@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
+<<<<<<< HEAD
 """ plots x, y as a line graph where y-axis is scaled logarithmically """
+=======
+import os
+>>>>>>> b97810dfb28d5b1f54da638ce77b8c8bcde0000c
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -9,9 +13,21 @@ t = 5730
 y = np.exp((r / t) * x)
 
 plt.plot(x, y)
+<<<<<<< HEAD
 plt.xlabel('Time (years)')
 plt.ylabel('Fraction Remaining')
 plt.title("Exponential Decay of C-14")
 plt.yscale("log")
 plt.xlim((0, 28650))
 plt.show()
+=======
+plt.xlabel("Time (years)")
+plt.ylabel("Fraction Remaining")
+plt.title("Exponential Decay of C-14")
+plt.yscale("log")
+plt.xlim(0, 28650)
+plt.savefig(
+    f"plots/{os.path.basename(__file__)[0:-3] + '_plot.png'}"
+)
+plt.show()
+>>>>>>> b97810dfb28d5b1f54da638ce77b8c8bcde0000c

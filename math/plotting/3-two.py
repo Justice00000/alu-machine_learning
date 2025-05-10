@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
+<<<<<<< HEAD
 """ plots x, y1 and x, y2 as line graphs, each with their own formatting """
+=======
+import os
+>>>>>>> b97810dfb28d5b1f54da638ce77b8c8bcde0000c
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -10,6 +14,7 @@ t2 = 1600
 y1 = np.exp((r / t1) * x)
 y2 = np.exp((r / t2) * x)
 
+<<<<<<< HEAD
 plt.plot(x, y1, 'r--', label='C-14')
 plt.plot(x, y2, 'g-', label='Ra-226')
 plt.xlabel('Time (years)')
@@ -19,3 +24,17 @@ plt.legend()
 plt.xlim((0, 20000))
 plt.ylim((0, 1))
 plt.show()
+=======
+plt.xlabel("Time (years)")
+plt.ylabel("Fraction Remaining")
+plt.title("Exponential Decay of Radioactive Elements")
+plt.axis([0, 20000, 0, 1])
+
+plt.plot(x, y1, 'r--', label='C-14')
+plt.plot(x, y2, 'g-', label='Ra-226')
+plt.legend()
+plt.savefig(
+    f"plots/{os.path.basename(__file__)[0:-3] + '_plot.png'}"
+)
+plt.show()
+>>>>>>> b97810dfb28d5b1f54da638ce77b8c8bcde0000c
